@@ -1,4 +1,4 @@
-@(dishes: List[models.Dish]/*, orderForm: Form[User]*/)
+@(dishes: List[models.Dish], orderForm: Form[User])
 
 @import helper._
 @import helper.twitterBootstrap._
@@ -46,7 +46,28 @@
             <h2 id="myModalLabel">Оформление заказа</h2>
         </div>
         <div class="modal-body">
+            @helper.form(action = routes.Application.submit){
+                <fieldset>
+                    @inputText(
+                        orderForm("username"),
+                        '_label -> "Имя пользователя",
+                        '_help -> "Пожалуйста, введите Ф.И.О.",
+                        '_error -> orderForm.globalError
+                    )
 
+                    @textarea(
+                        signupForm("address"),
+                        '_label -> "Адрес", 'cols -> 50
+                    )
+
+                    @inputText(
+                        orderForm("phone"),
+                        '_label -> "Телефон",
+                        '_help -> "Пожалуйста, введите номер телефона",
+                        '_error -> orderForm.globalError
+                    )
+
+                </fieldset>
 
         </div>
         <div class="modal-footer">

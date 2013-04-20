@@ -11,6 +11,7 @@ POST     /JsonExample                      controllers.Application.JsonExample()
 GET     /JsonExample                      controllers.Application.JsonExampleGET()
 POST     /JsonExamplePOST                      controllers.Application.JsonExamplePOST()
 GET    /assets/javascripts/routes   controllers.Application.javascriptRoutes()
+POST    /cart                       controllers.Application.submit()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

@@ -97,8 +97,6 @@ public class Application extends Controller {
         return ok("You selected id = "+id);
     }
 
-    //final static Form<User> orderForm = form(User.class);
-
     /*public static Result blank() {
         return ok(form.render(orderForm));
     } */
@@ -145,6 +143,8 @@ public class Application extends Controller {
         return ok(serializer.serialize(sorts));
     }
 
+    final static Form<User> orderForm = form(User.class);
+
     @Transactional
     public static Result cart(){
         Dish d;
@@ -158,21 +158,22 @@ public class Application extends Controller {
             dishes.add(d);
         }
 
-        //User defaulUser = new User("name", "address", new User.Phone("01.23.45.67.89"));
+        User defaultUser = new User("name", "address", "01.23.45.67.89");
 
-        return ok(cart.render(dishes)/*, form.render(orderForm.fill(defaulUser))*/);
+        return ok(cart.render(dishes, orderForm.fill(defaultUser)));
     }
 
-    /*public static Result submit() {
-        Form<User> filledForm = orderForm.bindFromRequest();
+    public static Result submit() {
+        /*Form<User> filledForm = orderForm.bindFromRequest();
 
         if(filledForm.hasErrors()) {
-            return badRequest(form.render(filledForm));
+            return badRequest(cart.render(filledForm));
         } else {
             User created = filledForm.get();
             return ok();
-        }
-    } */
+        } */
+        return ok();
+    }
 
     public static Result javascriptRoutes() {
         response().setContentType("text/javascript");

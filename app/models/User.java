@@ -16,7 +16,7 @@ public class User {
 
     public User() {}
 
-    public User(String username, String address, Phone phone) {
+    public User(String username, String address, String phone) {
         this.username = username;
         this.address = address;
         this.phone = phone;
@@ -30,10 +30,11 @@ public class User {
     public String address;
 
     @Constraints.Required
-    @Valid
-    public Phone phone;
+    //@Valid
+    //@Constraints.Pattern(value = "[0-9.+]+", message = "Пожалуйста, введите действительный телефон")
+    public String phone;
 
-    public static class Phone {
+    /*public static class Phone {
 
         public Phone() {}
 
@@ -44,5 +45,5 @@ public class User {
         @Constraints.Required
         @Constraints.Pattern(value = "[0-9.+]+", message = "Пожалуйста, введите действительный телефон")
         public String number;
-    }
+    }   */
 }
